@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class sightingDAO {
+public class sightingDAO { //classe dao per estrarre le informazioni che mi servono da un database e poi usarle nel Model
 		
-	public List<String> readShapes(){
+	public List<String> readShapes(){ //restituisce l'elenco di tutte le differenti forme del database
 		try {
 			Connection conn = DBConnect.getConnection();
 		
@@ -34,7 +34,7 @@ public class sightingDAO {
 		}
 	}
 	
-	public int countByShape(String shape) {
+	public int countByShape(String shape) { //restituisce il numero di ufo di una data forma passata come parametro
 		
 		try {
 			Connection conn = DBConnect.getConnection();
@@ -43,7 +43,7 @@ public class sightingDAO {
 			
 			PreparedStatement st2= conn.prepareStatement(sql2);
 			
-			st2.setString(1, shape);
+			st2.setString(1, shape); //settaggio del '?' in più rispetto alla precedente query
 			
 			ResultSet res2= st2.executeQuery();
 			res2.first();
